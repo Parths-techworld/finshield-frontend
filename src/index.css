@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FinShield Design System - Cybersecurity Dark Theme */
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 46%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+
+    --success: 142 76% 46%;
+    --success-foreground: 222 47% 6%;
+
+    --critical: 0 84% 60%;
+    --critical-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 17%;
+    --ring: 142 76% 46%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 142 76% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 217 33% 20%;
+    --sidebar-ring: 142 76% 46%;
+
+    /* Gradient tokens */
+    --gradient-cyber: linear-gradient(135deg, hsl(142 76% 46%) 0%, hsl(188 78% 41%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(38 92% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 6%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(142 76% 46% / 0.15) 0%, transparent 70%);
+
+    /* Shadow tokens */
+    --shadow-glow: 0 0 40px -10px hsl(142 76% 46% / 0.4);
+    --shadow-danger: 0 0 40px -10px hsl(0 84% 60% / 0.4);
+    --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.5);
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .status-critical {
+    @apply bg-destructive/20 text-destructive border-destructive/30;
+  }
+
+  .status-warning {
+    @apply bg-warning/20 text-warning border-warning/30;
+  }
+
+  .status-normal {
+    @apply bg-success/20 text-success border-success/30;
+  }
+
+  .cyber-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .danger-glow {
+    box-shadow: var(--shadow-danger);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(142 76% 46% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(142 76% 46% / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .shield-icon {
+    @apply text-primary drop-shadow-[0_0_10px_hsl(142_76%_46%_/_0.5)];
+  }
+
+  .fraud-badge {
+    @apply bg-destructive text-destructive-foreground font-bold px-4 py-2 rounded-full uppercase tracking-wider;
+    box-shadow: var(--shadow-danger);
+  }
+
+  .approved-badge {
+    @apply bg-success text-success-foreground font-bold px-4 py-2 rounded-full uppercase tracking-wider;
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyber {
+    background: var(--gradient-cyber);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-danger {
+    background: var(--gradient-danger);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scan-line {
+  animation: scan-line 3s linear infinite;
+}
